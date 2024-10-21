@@ -6,3 +6,9 @@ edition = "2021"
 [dependencies]
 tokio = { version = "1", features = ["full"] }
 tokio-postgres = "0.7"
+
+[profile.release]
+opt-level = "s"  # Optimize for size
+lto = true      # Enable Link Time Optimization
+codegen-units = 1 # Reduce codegen units for better optimization
+panic = "abort" # Use abort for panics to reduce binary size
